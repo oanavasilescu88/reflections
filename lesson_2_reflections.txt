@@ -1,0 +1,44 @@
+What happens when you initialize a repository? Why do you need to do it?
+The folder .git is added. Here git keeps the metadata and the history of commits
+
+How is the staging area different from the working directory and the repository?
+What value do you think it offers?
+The staging area is an intermediary location (imaginary folder) in which we add
+files before committing them to git repository. This is useful so that we select
+which files are committed to git. Maybe only a subset of the total files in the
+working directory need to be committed to git.
+
+How can you use the staging area to make sure you have one commit per logical
+change?
+
+What are some situations when branches would be helpful in keeping your history
+organized? How would branches help?
+
+How do the diagrams help you visualize the branch structure?
+
+What is the result of merging two branches together? Why do we represent it in
+the diagram the way we do?
+
+What are the pros and cons of Git's automatic merging vs. always doing merges
+manually?
+
+Commands
+git init: initializes or created a new repository  --> .git repository is created
+git status: shows which files have changed since the last commit
+git add: add file to staging area
+--------------
+Running git status on a repository which was just created (git init) will output:
+On branch master
+Initial commit
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	lesson_2_reflections.txt
+
+If a file is added to the staging area (git add), after git status, we will see:
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   lesson_1_reflections.txt
+
+------------
+A commit = a snapshot of a git repository
+Working area  --> Staging area --> Repository
