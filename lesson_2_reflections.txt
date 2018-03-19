@@ -10,6 +10,9 @@ working directory need to be committed to git.
 
 How can you use the staging area to make sure you have one commit per logical
 change?
+You can add to the staging area only the files that should be committed in one go,
+and exclude other files that have been modified, but it makes sense to have a
+separate commit for them.
 
 What are some situations when branches would be helpful in keeping your history
 organized? How would branches help?
@@ -26,6 +29,14 @@ Commands
 git init: initializes or created a new repository  --> .git repository is created
 git status: shows which files have changed since the last commit
 git add: add file to staging area
+git diff (no other arguments): shows the changes made and not added to the
+staging area; so, it compares the working directory to the staging area
+git diff --staged: shows the differences between the staging area and the last commit
+git reset --hard: Any previously pending changes to the Staging Index and the
+Working Directory gets reset to match the state of the Commit Tree. This means
+any pending work that was hanging out in the Staging Index and Working Directory
+will be lost.
+
 --------------
 Running git status on a repository which was just created (git init) will output:
 On branch master

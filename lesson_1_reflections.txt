@@ -37,7 +37,8 @@ Fill in your answer here
 
 
 git log: see previous commits
-(1)git diff <commit id 1> <commit id 2>: show differences between the files that have changed during the 2 commits
+(1)git diff <commit id 1> <commit id 2>: show differences between the files that
+have changed during the 2 commits
 git log --stat: statistics about which files have changed in each commit
 git clone <url to repository>: copy a repository including the history
 git config --global color.ui auto: set git to show additions in green and deletions in red
