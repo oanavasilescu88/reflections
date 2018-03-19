@@ -1,0 +1,57 @@
+How did viewing a diff between two versions of a file help you see the bug that
+was introduced?
+
+The output of FC/diff -u highlights the parts of the document where the
+changes took place. You can analyse only a few line instead of the whole
+document in order to spot the bug.
+
+How could having easy access to the entire history of a file make you a more
+efficient programmer in the long term?
+
+You can see what has changed and what led to a certain bug
+
+What do you think are the pros and cons of manually choosing when to create a
+commit, like you do in Git, vs having versions automatically saved, like Google
+docs does?
+
+You decide when there is an important checkpoint to track.
+
+Why do you think some version control systems, like Git, allow saving multiple
+files in one commit, while others, like Google Docs, treat each file separately?
+
+Google docs was not meant for source code file with interdependencies.
+
+How can you use the commands git log and git diff to view the history of files?
+
+See below
+
+How might using version control make you more confident to make changes that
+could break something?
+
+I can always go back to how it was before and easily check which lines caused
+the error to happen.
+
+Now that you have your workspace set up, what do you want to try using Git for?
+
+Fill in your answer here
+
+
+git log: see previous commits
+(1)git diff <commit id 1> <commit id 2>: show differences between the files that have changed during the 2 commits
+git log --stat: statistics about which files have changed in each commit
+git clone <url to repository>: copy a repository including the history
+git config --global color.ui auto: set git to show additions in green and deletions in red
+(2)git checkout: like restoring a previous version (diff. than the svn checkout)
+git init: create a git repository
+git status
+git add file1
+
+(1) git diff considers the first argument as the "original", and the second
+argument as the "new" version, so additions are lines present in the second
+argument but not the first.
+
+
+A commit = a snapshot of every file in your repository at the time you choose to make the commit
+Git repository = a set of files tracked by git as a cohesive unit
+Commits are parts of the repositories and repositories are part of git
+Clone takes an existing repository and creates one just like it
