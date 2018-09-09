@@ -16,14 +16,31 @@ separate commit for them.
 
 What are some situations when branches would be helpful in keeping your history
 organized? How would branches help?
+You create a branch when you want to add an experimental feature, create another
+version of the application, add another language, etc. This way, the main
+application will not be changed and a new version is created. Branches help to
+try new things without the fear that you can break something on the main branch.
+It also keeps multiple versions running in parallel which can later be merged
+keeping the benefits/additions of all branches/versions.
 
 How do the diagrams help you visualize the branch structure?
+With diagrams it is easy to understand from which commit a branch started, when
+the commits are merged back together, if there are any "detached" commits, etc.
 
 What is the result of merging two branches together? Why do we represent it in
 the diagram the way we do?
+The changes added in 2 branched are combined and retained in the new version of
+one of the two branches. The diagram is useful to understand which is the last
+commit before the merge, which changes were introduced in which branch, and what
+is the id of the commit that contains everything
 
 What are the pros and cons of Git's automatic merging vs. always doing merges
 manually?
+Git can merge automatically when there are no conflicts. It is good that it detects
+conflicts and reports them, so that people can verify the changes before deciding
+which one is the best one. If git would do this automatically, there will be mistakes.
+Git can merge automatically when people add new lines, delete lines, but not
+when the same line is modified by 2 people.
 
 Commands
 git init: initializes or created a new repository  --> .git repository is created
@@ -36,6 +53,30 @@ git reset --hard: Any previously pending changes to the Staging Index and the
 Working Directory gets reset to match the state of the Commit Tree. This means
 any pending work that was hanging out in the Staging Index and Working Directory
 will be lost.
+git branch: shows the current branches
+git branch <name>: creates a new branch with the specified name
+git checkout <name>: checkout the branch; changes are committed to this branch;
+the branch can be created by me or another person
+git checkout <name>: if the branch was created by a different person, the msg
+will be: "Branch <name> set up to track remote branch coins from origin.
+Switched to a new branch <name>"
+git log --graph --oneline master <name>: show a graph to understand the commits
+in the branches
+git checkout <commit id>: go back to a certain commit in the history of the branch
+(You are in 'detached HEAD' state) - if you make any commit now, this will not
+be in the history of the brach; it will be "detached" and unreachable (only by id)
+It cannot be seen in the history of any branch
+If you want to create a new branch to retain this commit, run:
+git checkout -b <new_branch_name>: it is a shotcut for running git branch <new_branch_name>
+and git checkout <new_branch_name>
+git merge master <branch_name>: create a merged version of the 2 branches
+git show: compare a commit to its parent; when you merge 2 branches, the commits
+are ordered by their time stamps. So you cannot simply 2 consecutives commits
+shown with git log because their may not be in parent-child relationship; so,
+git show is helpful in this case
+git branch -d <branch_name>: delete a branch; it deletes onyl its label; it doesn't
+delete the commits
+
 
 --------------
 Running git status on a repository which was just created (git init) will output:
@@ -44,12 +85,30 @@ Initial commit
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 	lesson_2_reflections.txt
-
+------
 If a file is added to the staging area (git add), after git status, we will see:
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 	new file:   lesson_1_reflections.txt
-
+-------
+What to do if you merge 2 branches and there are conflicts:
+1. open the file, edit it and solve the conflict
+2. run git status. You should see:
+On branch easy-mode
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   game.js
+no changes added to commit (use "git add" and/or "git commit -a")
+3. add the file. example: git add game.js. After "git status" you should see:
+On branch easy-mode
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+Changes to be committed:
+	modified:   game.js
+4. Commit: git commit game.js
 ------------
 A commit = a snapshot of a git repository
 Working area  --> Staging area --> Repository
